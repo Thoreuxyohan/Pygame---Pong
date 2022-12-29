@@ -59,7 +59,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-            
+
         #Player Movement Keys
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
@@ -74,14 +74,14 @@ while True:
 
         #Oppenent Movement Keys
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                opponent_speed += 7
             if event.key == pygame.K_w:
+                opponent_speed += 7
+            if event.key == pygame.K_a:
                 opponent_speed -= 7
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_a:
-                opponent_speed -= 7
             if event.key == pygame.K_w:
+                opponent_speed -= 7
+            if event.key == pygame.K_a:
                 opponent_speed += 7
 
     ball_animation()
