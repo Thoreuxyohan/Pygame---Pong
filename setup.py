@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, random
 
 def ball_animation():
     global ball_speed_x,ball_speed_y
@@ -9,7 +9,7 @@ def ball_animation():
     if ball.top <= 0 or ball.bottom >= screen_height:
         ball_speed_y *=-1
     if ball.left <= 0 or ball.right >= screen_width:
-        ball_speed_x *= -1 
+        ball_restart()
 
     if ball.colliderect(player) or ball.colliderect(opponent):
         ball_speed_x *= -1
@@ -29,6 +29,9 @@ def opponent_animation():
         opponent.top = 0
     if opponent.bottom >= screen_height:
         opponent.bottom = screen_height
+
+def ball_restart():
+    ball.center = (screen_width/2,screen_height/2)
 
 #General Setup
 pygame.init()
@@ -72,7 +75,7 @@ while True:
             if event.key == pygame.K_UP:
                 player_speed += 7
 
-        #Oppenent Movement Keys
+        #Opponent Movement Keys
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 opponent_speed += 7
