@@ -22,6 +22,14 @@ def player_animation():
     if player.bottom >= screen_height:
         player.bottom = screen_height
 
+def opponent_animation():
+    global opponent_speed
+    opponent.y += opponent_speed
+    if opponent.top <= 0:
+        opponent.top = 0
+    if opponent.bottom >= screen_height:
+        opponent.bottom = screen_height
+
 #General Setup
 pygame.init()
 clock = pygame.time.Clock()
@@ -61,9 +69,20 @@ while True:
                 player_speed -= 7
             if event.key == pygame.K_UP:
                 player_speed += 7
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_a:
+                opponent_speed += 7
+            if event.key == pygame.K_w:
+                opponent_speed -= 7
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_a:
+                opponent_speed -= 7
+            if event.key == pygame.K_w:
+                opponent_speed += 7
 
     ball_animation()
     player_animation()
+    opponent_animation()
 
     #Visual of the game
     screen.fill(bg_color)
