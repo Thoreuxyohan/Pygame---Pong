@@ -31,7 +31,10 @@ def opponent_animation():
         opponent.bottom = screen_height
 
 def ball_restart():
+    global ball_speed_x,ball_speed_y
     ball.center = (screen_width/2,screen_height/2)
+    ball_speed_x *= random.choice((1,-1))
+    ball_speed_y *= random.choice((1,-1))
 
 #General Setup
 pygame.init()
