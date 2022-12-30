@@ -59,6 +59,7 @@ ball_speed_y = 7
 player_speed = 0
 opponent_speed = 0
 
+#Function to play the game
 while True:
     #Handling input
     for event in pygame.event.get():
